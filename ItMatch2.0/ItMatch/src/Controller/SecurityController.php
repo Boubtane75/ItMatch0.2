@@ -43,6 +43,7 @@ class SecurityController extends AbstractController
      */
     public function login(){
 
+        $this->addFlash('success','Vous etez connecter');
         return $this->render('security/login.html.twig');
     }
 

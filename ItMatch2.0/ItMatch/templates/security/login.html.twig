@@ -5,6 +5,7 @@
 {% block title %}Hello SecurityController!{% endblock %}
 
 {% block body %}
+
     <h1 class="container">Connexion</h1>
 
 
@@ -16,7 +17,7 @@
             <input type="password" placeholder="Mot de passe" required name="_password" class="form-control">
         </div>
         <div class="form-group">
-            <p>Si vous navez pas de compte <a href="{{ path('security_registration') }}">Inscrit toi !</a></p>
+            <p>Si vous n'avez pas de compte <a href="{{ path('security_registration') }}">Inscrit vous ici !</a></p>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-success">connexion</button>
