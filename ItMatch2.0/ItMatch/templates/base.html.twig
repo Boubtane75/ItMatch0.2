@@ -9,7 +9,13 @@
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#">It Match</a>
+        {% if not app.user %}
+            <a class="navbar-brand" href="#">It Match</a>
+
+        {% else %}
+            <a class="navbar-brand" href="#"></a>
+        {% endif %}
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,7 +32,7 @@
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="{{path('contact') }}">Contact</a>
                 </li>
 
             </ul>

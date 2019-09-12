@@ -6,6 +6,9 @@
 
 {% block body %}
 
+    {% if error %}
+    <div class="alert alert-danger">{{ error.messageKey | trans(error.messagedata,'security') }}</div>
+    {% endif %}
     <h1 class="container">Connexion</h1>
 
 

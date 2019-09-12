@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -66,6 +68,21 @@ class Utilisateur implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $adress;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Cars", inversedBy="utilisateurs")
+     */
+    private $car;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Trajet", inversedBy="utilisateurs")
+     */
+    private $trajet;
+
+    public function __construct()
+    {
+        $this->trajet = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -196,5 +213,43 @@ class Utilisateur implements UserInterface
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getCar(): ?Cars
+    {
+        return $this->car;
+    }
+
+    public function setCar(?Cars $car): self
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Trajet[]
+     */
+    public function getTrajet(): Collection
+    {
+        return $this->trajet;
+    }
+
+    public function addTrajet(Trajet $trajet): self
+    {
+        if (!$this->trajet->contains($trajet)) {
+            $this->trajet[] = $trajet;
+        }
+
+        return $this;
+    }
+
+    public function removeTrajet(Trajet $trajet): self
+    {
+        if ($this->trajet->contains($trajet)) {
+            $this->trajet->removeElement($trajet);
+        }
+
+        return $this;
     }
 }
