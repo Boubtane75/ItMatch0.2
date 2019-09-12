@@ -8,7 +8,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">It Match</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,6 +32,9 @@
             </ul>
 
             {% if not app.user %}
+                <li class="nav-item">
+                    <a type="button" href="{{ path('security_registration') }}" class="btn btn-info">Inscription</a>
+                </li>
                 <li class="nav-item">
                     <a type="button" href="{{ path('security_login') }}" class="btn btn-info">Connexion</a>
                 </li>

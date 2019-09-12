@@ -1,0 +1,45 @@
+html, body {
+    background-image: url('https://wallpaperplay.com/walls/full/b/0/4/309441.jpg');
+    text-align: center;
+    background-position: center;
+    position: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.containerFormulaire{
+
+}
+
+.box{
+    margin: 150px auto;
+    width: 90%;
+    padding: 25px 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 25px;
+}
+
+.container{
+    width: 50%;
+}
+h1{
+    margin: 10px auto 50px auto;
+}
+
+.formulaire{
+    margin: auto;
+    width: 100%;
+}
+
+.form-group{
+    width: 50%;
+    margin: auto;
+    margin: 20px auto;   
+}
+
+
+.nav-item{
+    list-style-type: none;
+}

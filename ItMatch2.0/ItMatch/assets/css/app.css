@@ -1,4 +1,11 @@
-body {
-    background-color: lightgray;
+.nav-item{
+    list-style-type: none;
+}
 
+.navbar{
+    background-color: rgb(79, 116, 101);
+}
+
+.navbar{
+    border: none;
 }

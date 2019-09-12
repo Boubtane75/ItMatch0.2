@@ -1,0 +1,55 @@
+html, body{
+    background-image: linear-gradient(to right top, #009bff, #4bacff, #71bdff, #93ceff, #b4deff, #b4deff, #b4deff, #b4deff, #93ceff, #71bdff, #4bacff, #009bff);
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    position: fixed;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+h1{
+    margin: 10px auto 50px auto;
+    width: 100%;
+}
+
+
+.box{
+    margin: 150px auto;
+    padding: 25px 0;
+    border-radius: 2%;
+}
+
+
+.form-group>label{
+    display: none;
+}
+
+.form-group{
+    padding: auto 150px;
+}
+
+.fromInput{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.container{
+        padding: 0 10%;
+    background-color: rgb(173, 230, 222);
+    border-radius: 25px;
+}
+
+.littleInput{
+    width: 49%;
+}
+
+button{
+    margin-bottom: 15px;
+}
+
+.nav-item{
+    list-style-type: none;
+}
