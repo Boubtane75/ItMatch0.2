@@ -5,8 +5,18 @@
 {% block title %}Hello SecurityController!{% endblock %}
 
 {% block body %}
-    <h1 class="container">Inscription</h1>
+    <h1 class="container">Contact</h1>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
 
+    {% if not form.vars.valid %}
+    <div class="alert alert-danger" >
+        Votre message n'a pas pue etre envoyer
+    </div>
+    {% endif %}
     <div class="container">
 
         {{ form_start(form) }}

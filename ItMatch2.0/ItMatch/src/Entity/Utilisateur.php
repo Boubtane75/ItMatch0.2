@@ -6,11 +6,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
+ * @Vich\Uploadable()
  * @UniqueEntity(
  *     fields={"email"},
  *     message="l'email est deja utilisée"
@@ -25,6 +29,19 @@ class Utilisateur implements UserInterface
      */
     private $id;
 
+
+    /**
+     * @var string|null
+     * @ORM\Column(type="string",length=255)
+     */
+    private $filename;
+
+    /**
+     * @var File|null
+     * @Assert\Image(mimeTypes="image/jpeg")
+     * @Vich\UploadableField(mapping="user_image",fileNameProperty="filename")
+     */
+    private $imageFile;
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -78,6 +95,11 @@ class Utilisateur implements UserInterface
      * @ORM\ManyToMany(targetEntity="App\Entity\Trajet", inversedBy="utilisateurs")
      */
     private $trajet;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $Updated_at;
 
     public function __construct()
     {
@@ -252,4 +274,56 @@ class Utilisateur implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string|null $filename
+     * @return Utilisateur
+     */
+    public function setFilename(?string $filename): Utilisateur
+    {
+        $this->filename = $filename;
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     * @return Utilisateur
+     */
+    public function setImageFile(?File $imageFile): Utilisateur
+    {
+        $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile){
+            $this->Updated_at = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->Updated_at;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $Updated_at): self
+    {
+        $this->Updated_at = $Updated_at;
+
+        return $this;
+    }
+
 }

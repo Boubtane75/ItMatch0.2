@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: moi
+ * Profile: moi
  * Date: 12/09/19
  * Time: 9:56
  */
@@ -11,6 +11,7 @@ namespace App\Form;
 
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +25,7 @@ class ContactType extends AbstractType
             ->add('firstname',TextType::class)
             ->add('lastname',TextType::class)
             ->add('phone',TextType::class)
-            ->add('email',TextType::class)
+            ->add('email',EmailType::class)
             ->add('message',TextareaType::class)
             ;
     }

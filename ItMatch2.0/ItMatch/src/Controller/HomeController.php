@@ -12,7 +12,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
+
 {
+
+    public function __construct()
+    {
+
+
+    }
+
     /**
      * @Route("/", name="home")
      */
@@ -24,19 +32,18 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route ("",name="base")
-     */
+        /**
+         * @Route ("",name="base")
+         */
 
-    public function base(Utilisateur $user)
-    {
+        public function base(Utilisateur $user)
+        {
 
 
-
-        return $this->render('base.html.twig',[
-            'user'=> $user
-        ]);
-    }
+            return $this->render('base.html.twig',[
+                'user'=> $user
+            ]);
+        }
 
     /**
      * @Route("/Contact", name="contact")
@@ -54,10 +61,9 @@ class HomeController extends AbstractController
         {
 
             $notif->notify($contact);
-            $this->addFlash('sucess','votre email a bien été envoyé');
-            /*
+            $this->addFlash('success','votre email a bien été envoyé');
             return $this->redirectToRoute('contact');
-            */
+
         }
         return $this->render('home/Contact.html.twig',[
            'form' => $form->createView()
