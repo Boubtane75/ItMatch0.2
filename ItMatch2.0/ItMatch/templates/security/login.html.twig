@@ -10,6 +10,10 @@
     <div class="containerFormulaire">
     <div class="box">
         <h1 class="container">Connexion</h1>
+        {% if error %}
+    <div class="alert alert-danger">{{ error.messageKey | trans(error.messagedata,'security') }}</div>
+    {% endif %}
+    <h1 class="container">Connexion</h1>
 
         <form class="formulaire" action="{{ path('security_login') }}" method="post">
             <div class="form-group">

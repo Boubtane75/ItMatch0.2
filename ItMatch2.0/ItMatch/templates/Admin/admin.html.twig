@@ -1,0 +1,66 @@
+
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}Profile!{% endblock %}
+
+{% block body %}
+    <h1 class="container">Admin Utilisateur</h1>
+
+
+
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-info">
+{{ message }}
+    </div>
+    {% endfor %}
+  <div class="container">
+         <table class="table table-hover">
+             <thead>
+             <tr class="table-light">
+                 <th scope="row">Image</th>
+                 <td>Nom</td>
+                 <td>Email</td>
+                 <td>Phone</td>
+                 <td>Pays</td>
+                 <td>Ville</td>
+                 <td>Adress</td>
+                 <td>Action</td>
+             </tr>
+             </thead>
+             <tbody>
+             {% for user in user  %}
+
+             <tr class="table-active">
+                 <td>
+                     {% if user.filename %}
+                         <img src="/images/users/{{ user.filename }}" alt="card_img_top" class="img-thumbnail rounded" style="width: 40%; height: 40%">
+                     {% endif %}
+                 </td>
+                 <td>{{ user.username }}</td>
+                 <td>{{ user.email }}</td>
+                 <td>{{ user.phone }}</td>
+                 <td>{{ user.pays }}</td>
+                 <td>{{ user.ville }}</td>
+                 <td>{{ user.adress }}</td>
+                 <td><a href="{{ path('Admin.edit',{id: user.id}) }}" class="btn btn-outline-secondary">Edit</a>
+                 <form method="post" onsubmit="return confirm('Etes vous sur de vouloir suprimer?')" action="{{ path('Admin.delete',{id: user.id}) }}" >
+                     <input type="hidden" name="_method" value="DELETE">
+                     <button class="btn btn-danger">suprimer</button>
+                 </form>
+                 </td>
+             </tr>
+             {% endfor %}
+
+             </tbody>
+
+         </table>
+      <div class="text-right">
+          <a href= "{{ path('Admin.new') }}" class="btn btn-primary">Nouveaux Utilisateur</a>
+      </div>
+
+
+
+  </div>
+
+{% endblock %}

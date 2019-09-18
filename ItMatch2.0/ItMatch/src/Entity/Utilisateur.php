@@ -2,13 +2,19 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
+ * @Vich\Uploadable()
  * @UniqueEntity(
  *     fields={"email"},
  *     message="l'email est deja utilisée"
@@ -23,6 +29,19 @@ class Utilisateur implements UserInterface
      */
     private $id;
 
+
+    /**
+     * @var string|null
+     * @ORM\Column(type="string",length=255)
+     */
+    private $filename;
+
+    /**
+     * @var File|null
+     * @Assert\Image(mimeTypes="image/jpeg")
+     * @Vich\UploadableField(mapping="user_image",fileNameProperty="filename")
+     */
+    private $imageFile;
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -66,6 +85,32 @@ class Utilisateur implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $adress;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Cars", inversedBy="utilisateurs")
+     */
+    private $car;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Trajet", inversedBy="utilisateurs")
+     */
+    private $trajet;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $upfileat;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Trajet", mappedBy="conducteur_id")
+     */
+    private $trajets;
+
+    public function __construct()
+    {
+        $this->trajet = new ArrayCollection();
+        $this->trajets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -172,7 +217,7 @@ class Utilisateur implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return ['ROLE_USER'] and  ['ROLE_ADMIN'];
     }
 
     /**
@@ -197,4 +242,102 @@ class Utilisateur implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
+
+    public function getCar(): ?Cars
+    {
+        return $this->car;
+    }
+
+    public function setCar(?Cars $car): self
+    {
+        $this->car = $car;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Trajet[]
+     */
+    public function getTrajet(): Collection
+    {
+        return $this->trajet;
+    }
+
+    public function addTrajet(Trajet $trajet): self
+    {
+        if (!$this->trajet->contains($trajet)) {
+            $this->trajet[] = $trajet;
+        }
+
+        return $this;
+    }
+
+    public function removeTrajet(Trajet $trajet): self
+    {
+        if ($this->trajet->contains($trajet)) {
+            $this->trajet->removeElement($trajet);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFilename(): ?string
+    {
+        return $this->filename;
+    }
+
+    /**
+     * @param string|null $filename
+     * @return Utilisateur
+     */
+    public function setFilename(?string $filename): Utilisateur
+    {
+        $this->filename = $filename;
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File|null $imageFile
+     * @return Utilisateur
+     */
+    public function setImageFile(?File $imageFile): Utilisateur
+    {
+        $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile){
+            $this->upfileat = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getupfileat(): ?\DateTimeInterface
+    {
+        return $this->upfileat;
+    }
+
+    public function setupfileat(\DateTimeInterface $upfileat): self
+    {
+        $this->upfileat = $upfileat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Trajet[]
+     */
+    public function getTrajets(): Collection
+    {
+        return $this->trajets;
+    }
+
 }

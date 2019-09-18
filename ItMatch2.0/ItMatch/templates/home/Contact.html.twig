@@ -1,0 +1,37 @@
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello SecurityController!{% endblock %}
+
+{% block body %}
+    <h1 class="container">Contact</h1>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+    {% if not form.vars.valid %}
+    <div class="alert alert-danger" >
+        Votre message n'a pas pue etre envoyer
+    </div>
+    {% endif %}
+    <div class="container">
+
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col">{{ form_row(form.firstname) }}</div>
+            <div class="col">{{ form_row(form.lastname) }}</div>
+        </div>
+        <div class="row">
+            <div class="col">{{ form_row(form.phone) }}</div>
+            <div class="col">{{ form_row(form.email) }}</div>
+        </div>
+        {{ form_rest(form) }}
+        <button type="submit" class="btn btn-outline-primary">Envoyer</button>
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
