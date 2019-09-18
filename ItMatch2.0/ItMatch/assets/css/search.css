@@ -1,0 +1,49 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.container{
+    margin: 0;
+    padding: 0;
+    max-width: none;
+    overflow: hidden;
+}
+
+#map{
+    width:100%;
+    height: 100vh;
+}
+
+.map>iframe{
+    overflow: hidden;
+}
+
+h1{
+    font-size: 1.5em;
+    margin: 10px 0 40px 0;;
+}
+
+.searchBar{
+    top: 125px;
+    left: 75px;
+    z-index: 5555;
+    position: absolute;
+    width: 500px;
+    text-align: center;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.356);
+    background-color: whitesmoke;
+}
+
+.searchBar p{
+    text-align: left;
+}
+
+.form-control{
+    margin-bottom: 25px;
+}

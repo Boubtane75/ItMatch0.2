@@ -1,0 +1,49 @@
+
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/search.css') }}">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet'>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet'>
+{% endblock %}
+
+{% block title %}Rechercher un trajet !{% endblock %}
+
+{% block body %}
+<div class="searchBar">
+    <h1>Choisissez votre déstination</h1>
+    <div class="inputSearch">
+    <p>Départ :</p>
+    <input type="text" name="form" placeholder="Ex: Paris" class="form-control">
+    </div>
+    <div class="inputSearch">
+    <p>Destination :</p>
+    <input type="text" name="to" placeholder="Ex: Rouen" class="form-control">
+    </div>
+    <div class="choiceSearch">
+    <p>Date & Heure :</p>
+    <input type="datetime-local" name="rdv" class="form-control">
+    </div>
+    <button type="submit" id="btnPosition" class="btn btn-outline-primary">Trouver</button>
+</div>
+ 
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css' type='text/css' />
+<div id='map'></div>
+ 
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoieHdpenoiLCJhIjoiY2swbmpybTF4MDBrYTNtbXg3eTkyeWFleiJ9.LJrZc-HtZqUtNB63_66cbQ';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/light-v10',
+center: [2.5, 46.5],
+zoom: 5.60,
+});
+ 
+map.addControl(new mapboxgl.NavigationControl());
+</script>
+
+
+
+{% endblock %}

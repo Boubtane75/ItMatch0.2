@@ -9,10 +9,6 @@ html, body {
     width: 100%;
 }
 
-.containerFormulaire{
-
-}
-
 .box{
     margin: 150px auto;
     width: 90%;
@@ -42,4 +38,25 @@ h1{
 
 .nav-item{
     list-style-type: none;
+}
+
+@media screen and (max-width: 1100px){
+    html, body{
+        background-color: whitesmoke;
+        background-image: none;
+    }
+
+    .box{
+        width: 100%;
+    }
+
+    .container{
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1100px){
+    .container{
+        width: 100%;
+    }
 }

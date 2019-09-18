@@ -9,3 +9,15 @@
 .navbar{
     border: none;
 }
+
+nav{
+    position: absolute;
+    list-style-type: none;
+}
+
+.navBtn>.button{
+    padding: 10px;
+    background-color: red;
+    color: black;
+    text-decoration: none;
+}

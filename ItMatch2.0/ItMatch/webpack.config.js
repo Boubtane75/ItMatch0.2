@@ -27,6 +27,7 @@ Encore
     // .addEntry('login', './assets/js/login.js')
     .addStyleEntry('login', './assets/css/login.css')
     .addStyleEntry('register', './assets/css/register.css')
+    .addStyleEntry('search', './assets/css/search.css')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
