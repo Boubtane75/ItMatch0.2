@@ -6,12 +6,11 @@ use App\Entity\Utilisateur;
 use App\Form\UserTpeType;
 use App\Repository\UtilisateurRepository;
 use Doctrine\Common\Persistence\ObjectManager;
-//use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use phpDocumentor\Reflection\Types\This;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 
 class ProfilController extends AbstractController
@@ -39,7 +38,7 @@ class ProfilController extends AbstractController
        $user = $this->repository->findAll();
 
 
-        return $this->render('Admin/profile.html.twig',[
+        return $this->render('Admin/admin.html.twig',[
              'user'=>$user,
             ]
         );
@@ -58,6 +57,7 @@ class ProfilController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
 
         {
+            $user->setupfileat(new \DateTime());
             $hash = $encoder->encodePassword($user,$user->getPassword());
             $user->setPassword($hash);
             $this->em->persist($user);

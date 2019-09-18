@@ -43,6 +43,14 @@ class Trajet
      */
     private $utilisateurs;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateur", inversedBy="trajets")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $conducteur_id;
+
+
+
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
@@ -128,4 +136,20 @@ class Trajet
 
         return $this;
     }
+
+    public function getConducteurId(): ?Utilisateur
+    {
+        return $this->conducteur_id;
+    }
+
+    public function setConducteurId(?Utilisateur $conducteur_id): self
+    {
+        $this->conducteur_id = $conducteur_id;
+
+        return $this;
+    }
+
+
+
+
 }

@@ -99,11 +99,17 @@ class Utilisateur implements UserInterface
     /**
      * @ORM\Column(type="datetime")
      */
-    private $Updated_at;
+    private $upfileat;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Trajet", mappedBy="conducteur_id")
+     */
+    private $trajets;
 
     public function __construct()
     {
         $this->trajet = new ArrayCollection();
+        $this->trajets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -211,7 +217,7 @@ class Utilisateur implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return ['ROLE_USER'] and  ['ROLE_ADMIN'];
     }
 
     /**
@@ -309,21 +315,29 @@ class Utilisateur implements UserInterface
     {
         $this->imageFile = $imageFile;
         if ($this->imageFile instanceof UploadedFile){
-            $this->Updated_at = new \DateTime('now');
+            $this->upfileat = new \DateTime('now');
         }
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getupfileat(): ?\DateTimeInterface
     {
-        return $this->Updated_at;
+        return $this->upfileat;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $Updated_at): self
+    public function setupfileat(\DateTimeInterface $upfileat): self
     {
-        $this->Updated_at = $Updated_at;
+        $this->upfileat = $upfileat;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Trajet[]
+     */
+    public function getTrajets(): Collection
+    {
+        return $this->trajets;
     }
 
 }

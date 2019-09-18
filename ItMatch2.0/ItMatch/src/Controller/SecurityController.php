@@ -26,6 +26,7 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            $user->setupfileat(new \DateTime());
             $hash = $encoder->encodePassword($user,$user->getPassword());
              $user->setPassword($hash);
             $manager->persist($user);

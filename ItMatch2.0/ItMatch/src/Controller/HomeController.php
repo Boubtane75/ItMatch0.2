@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Entity\Utilisateur;
 use App\Form\ContactType;
+use App\Form\UserTpeType;
 use App\Notification\ContactNotif;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,11 +17,7 @@ class HomeController extends AbstractController
 
 {
 
-    public function __construct()
-    {
 
-
-    }
 
     /**
      * @Route("/", name="home")
@@ -32,18 +30,6 @@ class HomeController extends AbstractController
         ]);
     }
 
-        /**
-         * @Route ("",name="base")
-         */
-
-        public function base(Utilisateur $user)
-        {
-
-
-            return $this->render('base.html.twig',[
-                'user'=> $user
-            ]);
-        }
 
     /**
      * @Route("/Contact", name="contact")
@@ -71,4 +57,18 @@ class HomeController extends AbstractController
 
 
     }
+    /**
+     * @Route("/profile", name="profile")
+     */
+
+    public function profile (Request $request)
+    {
+        $form = $this->createForm(UserTpeType::class);
+        $form->handleRequest($request);
+
+        return $this->render('home/Profile.html.twig',[
+            'form' => $form->createView()
+        ]);
+    }
+
 }
