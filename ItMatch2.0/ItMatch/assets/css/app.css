@@ -13,6 +13,7 @@
 nav{
     position: absolute;
     list-style-type: none;
+    z-index: 999999;
 }
 
 .navBtn>.button{
