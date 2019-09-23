@@ -1,8 +1,81 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/home.css') }}">
+{% endblock %}
+
 {% block title %}Bienvenue{% endblock %}
 
 {% block body %}
-<h1>Home</h1>
-<p>hello world</p>
+    <h1 class="text-center">Bienvenue sur On the Road</h1>
+    <body class="corps">
+<div class="column">
+    <div class="boite-lateral">
+        <div class="box-img"></div>
+        <div class="bloc-text">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit, totam, sit at accusamus laboriosam eaque impedit iste eos iure corporis praesentium consequatur eveniet cum, ab nihil fuga perspiciatis a ullam.
+                Atque qui omnis eius corporis culpa molestiae itaque consequatur pariatur magnam nemo maiores quam illo, eveniet saepe deleniti vero adipisci voluptate? Aspernatur possimus similique natus ratione molestiae qui consectetur quasi!
+                Et impedit neque ab cum dignissimos explicabo maiores a nihil at quos, minima laudantium quam illo itaque maxime hic distinctio sit, minus voluptatibus non. Modi natus sequi accusamus in non.
+            </p>
+        </div>
+    </div>
+</div>
+<div class="call-to-action">
+    <h2>Vous voyagez seul ?</h2>
+    <a class="lientmort" href="">Proposez des places dans votre voiture</a>
+</div>
+
+
+<div class="column boite-ligne">
+
+    <div class="carac-box"><!--boite en column-->
+        <div class=" img-cara"><img src="sass/img/volant.svg" alt=""></div>
+        <div class=" text-cara"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt atque corrupti cum molestiae hic facilis accusantium magnam, ipsum voluptatum tempore quos doloribus, laboriosam eaque unde tempora magni, quaerat quis earum?</p></div>
+    </div>
+
+    <div class="carac-box"><!--boite en column-->
+        <div class=" img-cara"><img src="sass/img/volant.svg" alt=""></div>
+        <div class=" text-cara"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt atque corrupti cum molestiae hic facilis accusantium magnam, ipsum voluptatum tempore quos doloribus, laboriosam eaque unde tempora magni, quaerat quis earum?</p></div>
+    </div>
+
+    <div class="carac-box"><!--boite en column-->
+        <div class=" img-cara"><img src="sass/img/volant.svg" alt=""></div>
+        <div class=" text-cara"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt atque corrupti cum molestiae hic facilis accusantium magnam, ipsum voluptatum tempore quos doloribus, laboriosam eaque unde tempora magni, quaerat quis earum?</p></div>
+    </div>
+
+</div>
+
+
+<footer>
+    <div class="footer-container">
+
+        <div class="footer-block"><!--BLOCK 1-->
+            <h2>Contact Us</h2>
+            <hr>
+            <div class="box-arrow"><img src="sass/img/fleche.svg" alt=""><a href="">Coucou</a></div>
+            <div class="box-arrow"><img src="sass/img/fleche.svg" alt=""><a href="">Moi c'est</a></div>
+            <div class="box-arrow"><img src="sass/img/fleche.svg" alt=""><a href="">Bobbyazeazeazeazeaz</a></div>
+        </div>
+
+        <div class="footer-block"><!--BLOCK 1-->
+            <h2>Découvrez nous</h2>
+            <hr>
+            <div class="box-arrow"><img src="sass/img/fleche.svg" alt=""><a href="">Coucou</a></div>
+            <div class="box-arrow"><img src="sass/img/fleche.svg" alt=""><a href="">Moi c'est</a></div>
+            <div class="box-arrow"><img src="sass/img/fleche.svg" alt=""><a href="">Bobbyazeazeazeazeaz</a></div>
+        </div>
+
+        <div class="media-block">
+            <h2>Découvrez nous</h2>
+            <hr>
+            <div class="social-box">
+                <img src="sass/img/facebook.png" alt="facebook logo">
+                <img src="sass/img/twitter.png" alt="twitter logo">
+                <img src="sass/img/youtube.png" alt="youtube logo">
+            </div>
+        </div><!--BLOCK 4-->
+
+    </div>
+</footer>
+</body>
 {% endblock %}

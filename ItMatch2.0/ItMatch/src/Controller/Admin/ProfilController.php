@@ -21,11 +21,16 @@ class ProfilController extends AbstractController
      * @var ObjectManager
      */
     private $em;
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+    private $encoder;
 
-    public function __construct(UtilisateurRepository $repository, ObjectManager $em)
+    public function __construct(UtilisateurRepository $repository, ObjectManager $em,UserPasswordEncoderInterface $encoder)
     {
         $this->repository = $repository;
         $this->em = $em;
+        $this->encoder = $encoder;
     }
 
 
@@ -83,6 +88,9 @@ class ProfilController extends AbstractController
 
         if ($form->isSubmitted() && $form->isSubmitted())
         {
+
+            $hash = $this->encoder->encodePassword($user,$user->getPassword());
+            $user->setPassword($hash);
             $this->em->flush();
             $this->addFlash('success','Profile modifié');
             return $this->redirectToRoute('Admin');

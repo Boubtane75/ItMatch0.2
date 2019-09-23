@@ -13,11 +13,10 @@
         {% if error %}
     <div class="alert alert-danger">{{ error.messageKey | trans(error.messagedata,'security') }}</div>
     {% endif %}
-    <h1 class="container">Connexion</h1>
 
         <form class="formulaire" action="{{ path('security_login') }}" method="post">
             <div class="form-group">
-                <input type="text" placeholder="Adress email" required name="_username" class="form-control">
+                <input type="text" placeholder="Adresse email" required name="_username" class="form-control">
             </div>
             <div class="form-group">
                 <input type="password" placeholder="Mot de passe" required name="_password" class="form-control">

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trajet!{% endblock %}
+
+{% block body %}
+
+    <h1 class="container text-center">La Liste des Trajets</h1>
+
+    {% for trajet in trajet  %}
+        <div class="card-group">
+            <div class="card border-info mb-3 " style="max-width: 20rem;">
+                <div class="card-header">Trajet</div>
+                <div class="card-body">
+                    <h4 class="card-title">Detail</h4>
+                    <p class="card-text">l'utilisateur {{ trajet.conducteurid.username }} à proposer un trajet avec la voiture {{ trajet.conducteurid.car.model }}</p>
+                    <p class="card-text">Lieu de départ : {{ trajet.LieuDepart }}</p>
+                    <p class="card-text">Lieu de arriver : {{ trajet.LieuArrived }}</p>
+                    <p class="card-text">Heure de départ : {{ trajet.HeureDepart |date("m/d/Y")}}</p>
+                    <p class="card-text">Heure de arrivé : {{ trajet.HeureArrived|date("m/d/Y") }}</p>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

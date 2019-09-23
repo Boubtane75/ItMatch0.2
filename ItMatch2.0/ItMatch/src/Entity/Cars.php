@@ -21,11 +21,6 @@ class Cars
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $marque;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $model;
 
     /**
@@ -43,17 +38,6 @@ class Cars
         return $this->id;
     }
 
-    public function getMarque(): ?string
-    {
-        return $this->marque;
-    }
-
-    public function setMarque(string $marque): self
-    {
-        $this->marque = $marque;
-
-        return $this;
-    }
 
     public function getModel(): ?string
     {

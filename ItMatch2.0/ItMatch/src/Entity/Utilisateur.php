@@ -217,7 +217,7 @@ class Utilisateur implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'] and  ['ROLE_ADMIN'];
+        return ['ROLE_USER'] ;
     }
 
     /**
