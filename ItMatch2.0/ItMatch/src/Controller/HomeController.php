@@ -27,11 +27,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function index(TrajetRepository $repository)
     {
+        $trajet = $repository->findAll();
 
         return $this->render('home/index.html.twig',[
-
+            'trajet' =>$trajet
         ]);
     }
 
@@ -131,8 +132,8 @@ class HomeController extends AbstractController
 
     public function showTrajet (TrajetRepository $repository)
     {
-        $trajet = $repository->findAll();
 
+        $trajet = $repository->findAll();
 
         return $this->render('home/voirTrajet.html.twig',[
                 'trajet'=>$trajet,

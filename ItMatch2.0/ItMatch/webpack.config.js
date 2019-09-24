@@ -24,20 +24,23 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
+    .addEntry('recherche', './assets/js/recherche.js')
+    .addEntry('test', './assets/js/test.js')
     // .addEntry('login', './assets/js/login.js')
     .addStyleEntry('login', './assets/css/login.css')
     .addStyleEntry('register', './assets/css/register.css')
     .addStyleEntry('search', './assets/css/search.css')
     .addStyleEntry('home', './assets/css/home.css')
+    .addStyleEntry('contact', './assets/css/contact.css')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
-    .splitEntryChunks()
+    //.splitEntryChunks()
 
     // will require an extra script tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
-    .enableSingleRuntimeChunk()
+    // .enableSingleRuntimeChunk()
 
     /*
      * FEATURE CONFIG
@@ -46,11 +49,11 @@ Encore
      * list of features, see:
      * https://symfony.com/doc/current/frontend.html#adding-more-features
      */
-    .cleanupOutputBeforeBuild()
+    //.cleanupOutputBeforeBuild()
     .enableBuildNotifications()
-    .enableSourceMaps(!Encore.isProduction())
+    //.enableSourceMaps(!Encore.isProduction())
     // enables hashed filenames (e.g. app.abc123.css)
-    .enableVersioning(Encore.isProduction())
+    //.enableVersioning(Encore.isProduction())
 
     // enables @babel/preset-env polyfills
     .configureBabel(() => {}, {
@@ -74,6 +77,7 @@ Encore
     // uncomment if you use API Platform Admin (composer req api-admin)
     //.enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
+
 ;
 
 module.exports = Encore.getWebpackConfig();

@@ -5,9 +5,9 @@
 {% block body %}
 
     <h1 class="container text-center">La Liste des Trajets</h1>
-
+<div class="container">
     {% for trajet in trajet  %}
-        <div class="card-group">
+        <div class="card-group row">
             <div class="card border-info mb-3 " style="max-width: 20rem;">
                 <div class="card-header">Trajet</div>
                 <div class="card-body">
@@ -22,4 +22,7 @@
         </div>
 
     {% endfor %}
+
+</div>
+
 {% endblock %}
