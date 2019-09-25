@@ -1,3 +1,4 @@
+
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
@@ -47,45 +48,47 @@
 
     </div>
 
-    <div class="container-fiche">
         <div class="column">
             <div class="fiche">
-                {% for trajet in trajet  %}
-                <div class="block-card">
-                    <div class="img-pp">
-                        <img src="{{ trajet.conducteurid.filename }}" alt=""></div>
-                    <div class="whitee"><!--carré blanc-->
-                        <div class="pp-text">
-                            <div>
-                                <h3>{{ trajet.conducteurid.username }}</h3>
-                                <hr class="sub-bar">
-                            </div>
-                            <div class="travel-box">
-                                <p>Départ :  {{ trajet.LieuDepart }} </p>
-                                <p>Arriver : {{ trajet.LieuArrived }} </p>
-                            </div>
-                            <p class="travel-time">{{ trajet.HeureDepart |date("m/d/Y")}} //  {{ trajet.HeureArrived|date("m/d/Y") }}</p>
+                    {% for trajet in trajet  %}
+                        <div class="block-card ">
+                            <div class="img-pp">
+                                <img src="{{ trajet.conducteurid.filename }}" alt=""></div>
+                            <div class="whitee"><!--carré blanc-->
+                                <div class="pp-text">
+                                    <div>
+                                        <h3>{{ trajet.conducteurid.username }}</h3>
+                                        <hr class="sub-bar">
+                                    </div>
+                                    <div class="travel-box">
+                                        <p>Départ :  {{ trajet.LieuDepart }} </p>
+                                        <p>Arriver : {{ trajet.LieuArrived }} </p>
+                                    </div>
+                                    <p class="travel-time">{{ trajet.HeureDepart |date("m/d/Y")}} //  {{ trajet.HeureArrived|date("m/d/Y") }}</p>
 
-                            <div class="fiche-bloc-reso">
-                                <hr>
-                                <div class="fiche-reso">
-                                    <img src="img/twitter.png" alt="réseau">
-                                    <img src="img/youtube.png" alt="réseau">
-                                    <img src="img/facebook.png" alt="réseau">
+                                    <div class="fiche-bloc-reso">
+                                        <hr>
+                                        <div class="fiche-reso">
+                                            <img src="img/twitter.png" alt="réseau">
+                                            <img src="img/youtube.png" alt="réseau">
+                                            <img src="img/facebook.png" alt="réseau">
+                                        </div>
+                                        <hr>
+                                    </div>
+
+                                    <div class="line-car">
+                                        <img src="img/tuture.JPG" alt=""><p>{{ trajet.conducteurid.car.model }}</p>
+                                    </div>
+                                    <input class="join-fiche" type="button" value="Rejoindre">
+
                                 </div>
-                                <hr>
                             </div>
-
-                            <div class="line-car">
-                                <img src="img/tuture.JPG" alt=""><p>{{ trajet.conducteurid.car.model }}</p>
-                            </div>
-                            <input class="join-fiche" type="button" value="Rejoindre">
-
                         </div>
-                    </div>
-                </div>
-                {% endfor %}
+                    {% endfor %}
             </div>
+        </div>
+        <div class="pagination">
+            {{ knp_pagination_render(trajet) }}
         </div>
     </div>
 

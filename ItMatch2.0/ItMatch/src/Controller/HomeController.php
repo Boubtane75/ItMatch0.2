@@ -4,15 +4,16 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Entity\Trajet;
+use App\Entity\trajetSearch;
 use App\Entity\Utilisateur;
 use App\Form\ContactType;
+use App\Form\TrajetSearchType;
 use App\Form\TrajetType;
 use App\Form\UserTpeType;
 use App\Notification\ContactNotif;
-use App\Repository\CarsRepository;
 use App\Repository\TrajetRepository;
-use App\Repository\UtilisateurRepository;
 use Doctrine\Common\Persistence\ObjectManager;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,12 +28,18 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(TrajetRepository $repository)
+    public function index(PaginatorInterface $page ,TrajetRepository $repository, Request $request)
     {
-        $trajet = $repository->findAll();
+
+
+        $trajet = $page->paginate(
+            $repository->findAll(),
+            $request->query->getInt('page',1),
+            3
+        );
 
         return $this->render('home/index.html.twig',[
-            'trajet' =>$trajet
+            'trajet' =>$trajet,
         ]);
     }
 
@@ -130,13 +137,17 @@ class HomeController extends AbstractController
      * @Route("/all",name="all")
      */
 
-    public function showTrajet (TrajetRepository $repository)
+    public function showTrajet (TrajetRepository $repository,Request $request)
     {
+        $search = new trajetSearch();
+        $form = $this->createForm(TrajetSearchType::class,$search);
+        $form->handleRequest($request);
 
         $trajet = $repository->findAll();
 
         return $this->render('home/voirTrajet.html.twig',[
                 'trajet'=>$trajet,
+                'form' =>$form->createView()
             ]
         );
     }

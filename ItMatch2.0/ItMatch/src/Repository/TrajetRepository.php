@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Trajet;
+use App\Entity\trajetSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query;
 
 /**
  * @method Trajet|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,23 +20,19 @@ class TrajetRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Trajet::class);
     }
-
-    // /**
     //  * @return Trajet[] Returns an array of Trajet objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByExampleField($critaire)
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->where('t.lieu_depart = :LieuDepart')
+            ->setParameter('LieuDepart',$critaire['LieuDepart'])
+            ->andWhere('t.lieu_arrived = :LieuArrived')
+            ->setParameter('LieuArrived',$critaire['LieuArrived'])
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Trajet
