@@ -31,7 +31,6 @@ class UserTpeType extends AbstractType
             ])
             ->add('ville')
             ->add('adress')
-            ->add('password',PasswordType::class)
         ;
     }
 

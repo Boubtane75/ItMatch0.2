@@ -49,11 +49,23 @@ class Trajet
      */
     private $conducteur_id;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\passager", inversedBy="trajets")
+     */
+    private $passager;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="trajet", orphanRemoval=true)
+     */
+    private $comments;
+
 
 
     public function __construct()
     {
         $this->utilisateurs = new ArrayCollection();
+        $this->passager = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -145,6 +157,63 @@ class Trajet
     public function setConducteurId(?Utilisateur $conducteur_id): self
     {
         $this->conducteur_id = $conducteur_id;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|passager[]
+     */
+    public function getPassager(): Collection
+    {
+        return $this->passager;
+    }
+
+    public function addPassager(passager $passager): self
+    {
+        if (!$this->passager->contains($passager)) {
+            $this->passager[] = $passager;
+        }
+
+        return $this;
+    }
+
+    public function removePassager(passager $passager): self
+    {
+        if ($this->passager->contains($passager)) {
+            $this->passager->removeElement($passager);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setTrajet($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getTrajet() === $this) {
+                $comment->setTrajet(null);
+            }
+        }
 
         return $this;
     }

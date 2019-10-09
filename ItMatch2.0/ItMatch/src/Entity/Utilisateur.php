@@ -54,11 +54,13 @@ class Utilisateur implements UserInterface
     private $email;
 
     /**
+     * @var string|null
      * @ORM\Column(type="string", length=255)
      */
     private $phone;
 
     /**
+     *
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min="8",minMessage="Votre mot de passe doit faire minimum 8 caractére")
      *
@@ -72,16 +74,19 @@ class Utilisateur implements UserInterface
     public $confirm_password;
 
     /**
+     * @var string|null
      * @ORM\Column(type="string", length=255)
      */
     private $pays;
 
     /**
+     * @var string|null
      * @ORM\Column(type="string", length=255)
      */
     private $ville;
 
     /**
+     * @var string|null
      * @ORM\Column(type="string", length=255)
      */
     private $adress;
@@ -106,10 +111,22 @@ class Utilisateur implements UserInterface
      */
     private $trajets;
 
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Passager", mappedBy="passager")
+     */
+    private $passagers;
+
+
     public function __construct()
     {
         $this->trajet = new ArrayCollection();
         $this->trajets = new ArrayCollection();
+        $this->passagers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -215,9 +232,12 @@ class Utilisateur implements UserInterface
      *
      * @return (Role|string)[] The user roles
      */
-    public function getRoles()
+    public function getRoles(): array
     {
-        return ['ROLE_USER'] ;
+        $roles = $this->roles;
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
     /**
@@ -338,6 +358,37 @@ class Utilisateur implements UserInterface
     public function getTrajets(): Collection
     {
         return $this->trajets;
+    }
+
+    /**
+     * @return Collection|Passager[]
+     */
+    public function getPassagers(): Collection
+    {
+        return $this->passagers;
+    }
+
+    public function addPassager(Passager $passager): self
+    {
+        if (!$this->passagers->contains($passager)) {
+            $this->passagers[] = $passager;
+            $passager->setPassager($this);
+        }
+
+        return $this;
+    }
+
+    public function removePassager(Passager $passager): self
+    {
+        if ($this->passagers->contains($passager)) {
+            $this->passagers->removeElement($passager);
+            // set the owning side to null (unless already changed)
+            if ($passager->getPassager() === $this) {
+                $passager->setPassager(null);
+            }
+        }
+
+        return $this;
     }
 
 }

@@ -43,7 +43,8 @@
                  <td>{{ user.pays }}</td>
                  <td>{{ user.ville }}</td>
                  <td>{{ user.adress }}</td>
-                 <td><a href="{{ path('Admin.edit',{id: user.id}) }}" class="btn btn-outline-secondary">Edit</a>
+                 <td>
+                     <a href="{{ path('Admin.edit',{id: user.id}) }}" class="btn btn-outline-secondary">Edit</a>
                  <form method="post" onsubmit="return confirm('Etes vous sur de vouloir suprimer?')" action="{{ path('Admin.delete',{id: user.id}) }}" >
                      <input type="hidden" name="_method" value="DELETE">
                      <button class="btn btn-danger">suprimer</button>

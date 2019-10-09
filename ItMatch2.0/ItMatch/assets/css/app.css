@@ -9,7 +9,9 @@
 .navbar{
     border: none;
 }
-
+body {
+    background-color: white;
+}
 nav{
     position: absolute;
     list-style-type: none;

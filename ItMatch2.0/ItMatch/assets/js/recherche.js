@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
     $('#btnPosition').click(function(){
-        $('#search').replaceWith('#listTrajet');
+        $('#search').replaceWith();
     });
 });
 
@@ -110,7 +110,7 @@ function trajetClick(event){
     })
 }
 
-
+// Recherche départ
 var inputdepart = document.getElementById("inputdepart");
 var resultdepart = document.getElementById("resultdepart");
 
@@ -141,11 +141,13 @@ inputdepart.addEventListener('keyup', function() {
 
     resultdepart.style.display = "block";
 
-    fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/" + inputdepart.value + ".json?types=place,locality&access_token=" + mapboxgl.accessToken)
+    fetch("https://api.mapbox.com/geocoding/v5/mapbox.places/" + inputdepart.value +
+        ".json?types=place,locality&access_token=" + mapboxgl.accessToken)
         .then(function(response){
             return response.json();
         })
         .then(function(data){
+
             let list = data.features.map(function(el){
                 return {
                     name: el.place_name,
@@ -167,7 +169,7 @@ inputdepart.addEventListener('keyup', function() {
             }
         })
 })
-
+// fin recherche départ
 
 var inputarrive = document.getElementById("inputarrive");
 var resultarrive = document.getElementById("resultarrive");

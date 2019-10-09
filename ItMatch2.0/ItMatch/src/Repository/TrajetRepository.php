@@ -20,13 +20,16 @@ class TrajetRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Trajet::class);
     }
-    //  * @return Trajet[] Returns an array of Trajet objects
+
+    /**
+     * @array $critaire
+     */
     public function findByExampleField($critaire)
     {
         return $this->createQueryBuilder('t')
-            ->where('t.lieu_depart = :LieuDepart')
+            ->where('t.LieuDepart = :LieuDepart')
             ->setParameter('LieuDepart',$critaire['LieuDepart'])
-            ->andWhere('t.lieu_arrived = :LieuArrived')
+            ->andWhere('t.LieuArrived = :LieuArrived')
             ->setParameter('LieuArrived',$critaire['LieuArrived'])
             ->getQuery()
             ->getResult()
