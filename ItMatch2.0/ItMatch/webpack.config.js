@@ -32,6 +32,7 @@ Encore
     .addStyleEntry('search', './assets/css/search.css')
     .addStyleEntry('home', './assets/css/home.css')
     .addStyleEntry('contact', './assets/css/contact.css')
+    .addStyleEntry('trajetuser', './assets/css/trajetuser.css')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
