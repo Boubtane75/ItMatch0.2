@@ -8,7 +8,7 @@
 {% block body %}
 
 
-<h1>teste</h1>
+<h1>Le trajet de {{ trajet.conducteurid.username }} </h1>
         <div class="block-card ">
             <div class="img-pp">
                 <img src="/image/users/{{ trajet.conducteurid.filename }}" alt=""></div>
@@ -22,7 +22,7 @@
                         <p>Départ :  {{ trajet.LieuDepart }} </p>
                         <p>Arriver : {{ trajet.LieuArrived }} </p>
                     </div>
-                    <p class="travel-time">{{ trajet.HeureDepart |date("m/d/Y")}} //  {{ trajet.HeureArrived|date("m/d/Y") }}</p>
+                    <p class="travel-time">{{ trajet.HeureDepart |date("m/d/Y")}} </p>
 
                     <div class="fiche-bloc-reso">
                         <hr>
@@ -37,11 +37,27 @@
                     <div class="line-car">
                         <img src="img/tuture.JPG" alt=""><p>{{ trajet.conducteurid.car.model }}</p>
                     </div>
+                    <p>Les passagers sont :</p>
+                    {% for passager in trajet.passager %}
+                        <div class="line-car">
+                            <p>{{ passager.username }}</p>
+                        </div>
+                    {% endfor %}
 
+                    {% if trajet.passager|length < 3 %}
+                    <form action="{{ path('Rejoindre',{id: trajet.id}) }}" method="post">
+                        <button type="submit" class="btn btn-primary">Rejoindre</button>
+                    </form>
+                    {% else %}
+                        <div class="line-car">
+                            <p>le trajet est complet</p>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     <div class="container">
+        <h1>{{ coment | length }} comentaires :</h1>
         {% for coment in coment %}
             <h3>{{ coment.author }}</h3>
             <span>{{ coment.createdAd |date('d/m/y')}}</span>

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
@@ -19,6 +20,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *     fields={"email"},
  *     message="l'email est deja utilisée"
  * )
+ * @ApiResource()
  */
 class Utilisateur implements UserInterface
 {
@@ -32,7 +34,7 @@ class Utilisateur implements UserInterface
 
     /**
      * @var string|null
-     * @ORM\Column(type="string",length=255)
+     * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $filename;
 
@@ -55,7 +57,7 @@ class Utilisateur implements UserInterface
 
     /**
      * @var string|null
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $phone;
 
@@ -75,19 +77,19 @@ class Utilisateur implements UserInterface
 
     /**
      * @var string|null
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $pays;
 
     /**
      * @var string|null
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $ville;
 
     /**
      * @var string|null
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $adress;
 
@@ -96,10 +98,6 @@ class Utilisateur implements UserInterface
      */
     private $car;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Trajet", inversedBy="utilisateurs")
-     */
-    private $trajet;
 
     /**
      * @ORM\Column(type="datetime")
@@ -116,10 +114,17 @@ class Utilisateur implements UserInterface
      */
     private $roles = [];
 
+
+
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Passager", mappedBy="passager")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Trajet", mappedBy="passager")
      */
-    private $passagers;
+    private $passager;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Hobby", mappedBy="hobbyUser")
+     */
+    private $hobbies;
 
 
     public function __construct()
@@ -127,6 +132,8 @@ class Utilisateur implements UserInterface
         $this->trajet = new ArrayCollection();
         $this->trajets = new ArrayCollection();
         $this->passagers = new ArrayCollection();
+        $this->passager = new ArrayCollection();
+        $this->hobbies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -368,7 +375,7 @@ class Utilisateur implements UserInterface
         return $this->passagers;
     }
 
-    public function addPassager(Passager $passager): self
+    public function addPassager(Utilisateur $passager): self
     {
         if (!$this->passagers->contains($passager)) {
             $this->passagers[] = $passager;
@@ -378,7 +385,7 @@ class Utilisateur implements UserInterface
         return $this;
     }
 
-    public function removePassager(Passager $passager): self
+    public function removePassager(Utilisateur $passager): self
     {
         if ($this->passagers->contains($passager)) {
             $this->passagers->removeElement($passager);
@@ -386,6 +393,44 @@ class Utilisateur implements UserInterface
             if ($passager->getPassager() === $this) {
                 $passager->setPassager(null);
             }
+        }
+
+        return $this;
+    }
+
+
+
+    /**
+     * @return Collection|Trajet[]
+     */
+    public function getPassager(): Collection
+    {
+        return $this->passager;
+    }
+
+    /**
+     * @return Collection|Hobby[]
+     */
+    public function getHobbies(): Collection
+    {
+        return $this->hobbies;
+    }
+
+    public function addHobby(Hobby $hobby): self
+    {
+        if (!$this->hobbies->contains($hobby)) {
+            $this->hobbies[] = $hobby;
+            $hobby->addHobbyUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHobby(Hobby $hobby): self
+    {
+        if ($this->hobbies->contains($hobby)) {
+            $this->hobbies->removeElement($hobby);
+            $hobby->removeHobbyUser($this);
         }
 
         return $this;

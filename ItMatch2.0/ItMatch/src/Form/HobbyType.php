@@ -2,27 +2,25 @@
 
 namespace App\Form;
 
-use App\Entity\Trajet;
+use App\Entity\Hobby;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TrajetType extends AbstractType
+class HobbyType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('LieuDepart')
-            ->add('LieuArrived')
-            ->add('HeureDepart')
+            ->add('nomHobby')
+            ->add('hobbyUser')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Trajet::class,
+            'data_class' => Hobby::class,
         ]);
     }
 }
