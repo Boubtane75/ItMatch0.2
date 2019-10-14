@@ -5,9 +5,11 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TrajetRepository")
+ * @ApiResource()
  */
 class Trajet
 {
@@ -33,15 +35,6 @@ class Trajet
      */
     private $HeureDepart;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $HeureArrived;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", mappedBy="trajet")
-     */
-    private $utilisateurs;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Utilisateur", inversedBy="trajets")
@@ -49,15 +42,16 @@ class Trajet
      */
     private $conducteur_id;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\passager", inversedBy="trajets")
-     */
-    private $passager;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="trajet", orphanRemoval=true)
      */
     private $comments;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", inversedBy="passager")
+     */
+    private $passager;
 
 
 
@@ -109,17 +103,6 @@ class Trajet
         return $this;
     }
 
-    public function getHeureArrived(): ?\DateTimeInterface
-    {
-        return $this->HeureArrived;
-    }
-
-    public function setHeureArrived(\DateTimeInterface $HeureArrived): self
-    {
-        $this->HeureArrived = $HeureArrived;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Utilisateur[]
@@ -169,7 +152,7 @@ class Trajet
         return $this->passager;
     }
 
-    public function addPassager(passager $passager): self
+    public function addPassager(Utilisateur $passager): self
     {
         if (!$this->passager->contains($passager)) {
             $this->passager[] = $passager;
@@ -178,7 +161,7 @@ class Trajet
         return $this;
     }
 
-    public function removePassager(passager $passager): self
+    public function removePassager(Utilisateur $passager): self
     {
         if ($this->passager->contains($passager)) {
             $this->passager->removeElement($passager);

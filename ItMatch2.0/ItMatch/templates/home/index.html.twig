@@ -87,7 +87,7 @@
                                 <p>Départ :  {{ trajet.LieuDepart }} </p>
                                 <p>Arriver : {{ trajet.LieuArrived }} </p>
                             </div>
-                            <p class="travel-time">{{ trajet.HeureDepart |date("m/d/Y")}} //  {{ trajet.HeureArrived|date("m/d/Y") }}</p>
+                            <p class="travel-time">{{ trajet.HeureDepart |date("m/d/Y")}} </p>
 
                             <div class="fiche-bloc-reso">
                                 <hr>
@@ -102,7 +102,7 @@
                             <div class="line-car">
                                 <img src="img/tuture.JPG" alt=""><p>{{ trajet.conducteurid.car.model }}</p>
                             </div>
-                            <a href="{{ path('test',{id: app.user.id}) }}" class="text-center" type="button" >Rejoindre</a>
+                            <a href="{{ path('Trajet',{id: trajet.id}) }}" class="text-center" type="button" >Rejoindre</a>
 
                         </div>
                     </div>

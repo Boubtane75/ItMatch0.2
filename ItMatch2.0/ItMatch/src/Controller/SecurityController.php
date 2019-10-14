@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Trajet;
 use App\Entity\Utilisateur;
 use App\Form\RegistrationType;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -25,6 +26,7 @@ class SecurityController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid())
         {
+
             $user->setupfileat(new \DateTime());
             $hash = $encoder->encodePassword($user,$user->getPassword());
              $user->setPassword($hash);
@@ -43,6 +45,7 @@ class SecurityController extends AbstractController
      * @Route("/connexion",name="security_login")
      */
     public function login(AuthenticationUtils $authen){
+
 
         $error = $authen->getLastAuthenticationError();
         return $this->render('security/login.html.twig',[

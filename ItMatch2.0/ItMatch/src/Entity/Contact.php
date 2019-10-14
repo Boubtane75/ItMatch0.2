@@ -10,6 +10,7 @@ namespace App\Entity;
 
 use phpDocumentor\Reflection\DocBlock\Tags\Property;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 class Contact
 {

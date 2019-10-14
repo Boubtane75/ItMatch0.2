@@ -4,27 +4,25 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Contact;
-use App\Entity\Passager;
 use App\Entity\Trajet;
 use App\Entity\trajetSearch;
 use App\Entity\Utilisateur;
 use App\Form\CommentType;
 use App\Form\ContactType;
+use App\Form\HobbyType;
 use App\Form\TrajetSearchType;
 use App\Form\TrajetType;
 use App\Form\UserTpeType;
 use App\Notification\ContactNotif;
+use App\Repository\HobbyRepository;
 use App\Repository\TrajetRepository;
-use App\Service\formSearch;
 use Doctrine\Common\Persistence\ObjectManager;
 use Knp\Component\Pager\PaginatorInterface;
-use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use \Datetime;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class HomeController extends AbstractController
 
@@ -35,6 +33,7 @@ class HomeController extends AbstractController
      */
     public function index(Request $request, PaginatorInterface $page ,TrajetRepository $repository)
     {
+
         $search = new trajetSearch();
         $form = $this->createForm(TrajetSearchType::class,$search);
         $form->handleRequest($request);
@@ -46,6 +45,7 @@ class HomeController extends AbstractController
         );
 
         return $this->render('home/index.html.twig',[
+
             'form' => $form->createView(),
             'trajet' =>$trajet,
         ]);
@@ -114,6 +114,7 @@ class HomeController extends AbstractController
 
     public function CreateTrajet(Request $request,ObjectManager $manager)
     {
+
         $trajet = new Trajet();
         $form = $this->createForm(TrajetType::class,$trajet);
         $form->handleRequest($request);
@@ -135,11 +136,14 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/test{id}",name="test")
+     * @Route("/Trajet/{id}",name="Trajet")
      */
 
-    public function teste (Trajet $trajects,$id, Request $request, ObjectManager $manager)
+    public function letrajet ($id, Trajet $trajects, Request $request, ObjectManager $manager, HobbyRepository $repository)
     {
+     
+        $idTrajet = $trajects->getId();
+        $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository(Trajet::class);
         $repi = $this->getDoctrine()->getRepository(Comment::class);
         $comments = $repi->findAll();
@@ -154,10 +158,11 @@ class HomeController extends AbstractController
             $manager->persist($comment);
             $manager->flush();
 
-            return $this->redirectToRoute('test',['id'=>$trajects->getId()]);
+            return $this->redirectToRoute('Trajet',['id' => $idTrajet]);
         }
 
-        return $this->render('home/test.html.twig',[
+        return $this->render('home/TrajetUtilisateur.html.twig',[
+            'user' => $user,
             'coment'=>$comments,
             'form' => $form->createView(),
             'trajet'=>$trajet
@@ -167,12 +172,19 @@ class HomeController extends AbstractController
 
 
     /**
-     * @Route("/tchat",name="tchat")
+     * @Route("/Rejoindre/{id}",name="Rejoindre")
      */
 
-    public function tchat ()
+    public function rejoindreTrajet($id,ObjectManager $manager, TrajetRepository $repo)
     {
-        return $this->render('home/tchat.html.twig');
+
+            $trajet = $repo->find($id) ;
+            $trajet->addPassager($this->getUser());
+            $manager->persist($trajet);
+            $manager->flush();
+            return $this->redirectToRoute('Trajet',['id' => $id]);
+
+
     }
 
 
