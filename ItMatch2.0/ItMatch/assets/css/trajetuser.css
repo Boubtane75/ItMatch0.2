@@ -5,8 +5,12 @@ html, body {
 
 .container-details {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+}
+
+.block-card {
+  margin: 30px auto;
 }
 
 .wafack {
