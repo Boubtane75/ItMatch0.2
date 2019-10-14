@@ -1,0 +1,89 @@
+$grid-gutter-width: 30px;
+$primary:#C5FFF7;
+$secondary:#CCF1FF;
+$gradient:(to right top, #009bff, #4bacff, #71bdff, #93ceff, #b4deff, #b4deff, #b4deff, #b4deff, #93ceff, #71bdff, #4bacff, #009bff);
+$gris:#3A3A3A;
+
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.container-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.wafack{
+    background-color: $primary;
+}
+.box-coms{
+    padding: $grid-gutter-width*2 0;
+    margin:$grid-gutter-width auto;
+}
+.grey-box{
+    background-color:#F7F7F7;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: $grid-gutter-width auto;
+    border-radius: 5px;
+    h3{
+        font-size:2rem;
+        font-weight: 700;
+    }
+    span{
+        font-size:1.2rem;
+    }
+}
+.content-text{
+   margin-top: $grid-gutter-width;
+   p{
+       font-size:1.3rem;
+   }
+}
+
+.button-propal{
+    width: 200px;
+    padding: 0;
+    margin: $grid-gutter-width auto;
+    font-weight:700;
+    color: $gris;
+    background-color: white;
+    border:2px solid $gris;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    &:hover{
+        background-color:$gris;
+        color: $primary;
+        transition: 0.8s;
+    }
+}
+.wesh{
+    
+    padding: $grid-gutter-width/4 0;
+}
+.container{
+    padding: $grid-gutter-width*2 0;
+}
+.form-group{
+    label{
+        font-size: 1.5rem;
+    }
+    input{
+        border: 1px solid $gris;
+    }
+    textarea{
+        height: 200px;
+        font-size: 1.3rem;
+        border: 1px solid $gris;
+    }
+    .form-control{
+        font-size: 1.3rem;
+    }
+}

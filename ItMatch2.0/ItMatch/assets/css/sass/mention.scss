@@ -1,0 +1,71 @@
+$grid-gutter-width: 30px;
+$primary:#C5FFF7;
+$secondary:#CCF1FF;
+$gradient:(to right top, #009bff, #4bacff, #71bdff, #93ceff, #b4deff, #b4deff, #b4deff, #b4deff, #93ceff, #71bdff, #4bacff, #009bff);
+$gris:#3A3A3A;
+
+html{
+    margin: 0;
+    padding:0;
+    box-sizing:0;
+}
+.corps{
+    margin:0;
+    padding:0;
+}
+.notice{
+    width: 85%;
+    border-radius: 30px;
+    background-color: #BDBCBB;
+    margin: $grid-gutter-width*2 auto;
+    font-weight: 700;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.50);
+
+    h1{
+        font-size: 3.5rem;
+        color: $secondary;
+        padding: $grid-gutter-width*2;
+    }
+
+    h2{
+        font-size: 2rem;
+        color: $secondary;
+        margin-bottom: $grid-gutter-width;
+    }
+    p{
+        color: $gris;
+    }
+}
+
+.notice-text{
+    padding: $grid-gutter-width*2;
+    width: 95%;
+    font-size: 1.3rem;
+}
+
+@media screen and (max-width: 730px) {
+    .corps{
+        background-color:pink;
+        h1{
+            font-size: 3rem;
+        }
+    }
+}
+@media screen and (max-width: 730px) {
+    .corps{
+        background-color:pink;
+        h1{
+            font-size: 2rem;
+            padding: $grid-gutter-width;
+        }
+        h2{
+            font-size:1.5rem;
+        }
+        p{
+            font-size: 1rem;
+        }
+    }
+    .notice-text{
+        padding: $grid-gutter-width;
+    }
+}
