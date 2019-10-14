@@ -49,34 +49,38 @@
     </div>
 
 <div class="container-fiche">
-    <div class="container">
+    <div>
         {{ form_start(form) }}
-        <div class="form-row">
-            <div class="col">
-                {{ form_row(form.Depart) }}
-            </div>
-            <div class="col">
-                {{ form_row(form.Arriver) }}
-            </div>
-            <div class="col">
-                <button class="btn btn-info " style="margin-top: 30px">Rechercher</button>
-            </div>
+        <div>
+            <div class="container-comeback"><!-- GROSSE BOITE SAH-->
+                <div class="place-from-to"><!-- BOITE COME AND BACK-->
+                    <div class="input-location">
+                        {{ form_row(form.Depart) }}
+                    </div>
+                    <div class="input-location">
+                        {{ form_row(form.Arriver) }}
+                    </div>
+                </div>
+                <div class="input-from-to">
+                    <button class="btn btn-info ">Rechercher</button>
+                </div>
+            </div>    
         </div>
         {{ form_end(form) }}
     </div>
     {% if app.request.method == 'GET'%}
     <div class="column">
-        <div class="fiche">
            {% if trajet|length == 0 %}
-                <h3>Aucun Résultat pour vôtre recherche</h3>
+                <h3 class=" result-sentence">Aucun Résultat pour vôtre recherche</h3>
 
             {% else %}
-                <h3>Résultat de votre recherche</h3>
+                <h3 class=" result-sentence">Résultat de votre recherche :</h3>
+        <div class="container-result">
 
             {% for trajet in trajet  %}
                 <div class="block-card ">
                     <div class="img-pp">
-                        <img src="/image/users/{{ trajet.conducteurid.filename }}" alt=""></div>
+                        <img src="/images/users/{{ trajet.conducteurid.filename }}" alt="card_img_top"></div>
                     <div class="whitee"><!--carré blanc-->
                         <div class="pp-text">
                             <div>
@@ -102,7 +106,7 @@
                             <div class="line-car">
                                 <img src="img/tuture.JPG" alt=""><p>{{ trajet.conducteurid.car.model }}</p>
                             </div>
-                            <a href="{{ path('Trajet',{id: trajet.id}) }}" class="text-center" type="button" >Rejoindre</a>
+                            <a href="{{ path('Trajet',{id: trajet.id}) }}" class="text-center" >Rejoindre</a>
 
                         </div>
                     </div>
@@ -112,11 +116,11 @@
         </div>
         {% endif %}
     </div>
-</div>
-
         <div class="pagination">
             {{ knp_pagination_render(trajet) }}
         </div>
+</div>
+
     </div>
 
 
@@ -153,9 +157,9 @@
                 <h2>Découvrez nous</h2>
                 <hr>
                 <div class="social-box">
-                    <img src="img/facebook.png" alt="facebook logo">
-                    <img src="img/twitter.png" alt="twitter logo">
-                    <img src="img/youtube.png" alt="youtube logo">
+                    <a href="#"><img src="img/facebook.png" alt="facebook logo"></a>
+                    <a href="#"><img src="img/twitter.png" alt="twitter logo"></a>
+                    <a href="#"><img src="img/youtube.png" alt="youtube logo"></a>
                 </div>
             </div>
 

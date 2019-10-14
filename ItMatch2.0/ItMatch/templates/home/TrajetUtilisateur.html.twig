@@ -1,17 +1,17 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('build/home.css') }}">
+<link rel="stylesheet" href="{{ asset('build/trajetuser.css') }}">
 {% endblock %}
 {% block title %}Trajet!{% endblock %}
 
 {% block body %}
 
-
+    <div class="container-details">
 <h1>Le trajet de {{ trajet.conducteurid.username }} </h1>
         <div class="block-card ">
             <div class="img-pp">
-                <img src="/image/users/{{ trajet.conducteurid.filename }}" alt=""></div>
+                <img src="/images/users/{{ trajet.conducteurid.filename }}" alt="card_img_top"></div>
             <div class="whitee"><!--carré blanc-->
                 <div class="pp-text">
                     <div>
@@ -56,12 +56,19 @@
                 </div>
             </div>
         </div>
-    <div class="container">
-        <h1>{{ coment | length }} comentaires :</h1>
+<div class="wafack">
+<h1>{{ coment | length }} comentaires :</h1>
+    <div class="container box-coms">
         {% for coment in coment %}
-            <h3>{{ coment.author }}</h3>
-            <span>{{ coment.createdAd |date('d/m/y')}}</span>
-            <p>{{ coment.Contenu }}</p>
+        <div class="grey-box">
+            <div>
+                <h3>{{ coment.author }}</h3>
+                <span>{{ coment.createdAd |date('d/m/y')}}</span>
+            </div>
+            <div class="content-text">
+                <p>{{ coment.Contenu }}</p>
+            </div>
+        </div>
         {% endfor %}
     </div>
 
@@ -70,12 +77,15 @@
         {{ form_start(form) }}
         {{ form_row(form.author,{'attr':{'placeholder': "votre pseudo"}}) }}
         {{ form_row(form.Contenu,{'attr':{'placeholder': "votre commentaire"}}) }}
-        <button type="submit" class="btn btn-primary">commentaire</button>
+    <div class="wesh">
+        <button type="submit" class="button-propal">Publier</button>
+    </div>
         {{ form_end(form) }}
     </div>
 
     {% else %}
-    <h2>Vous ne pouvez pas commentez car il faut vous connecter</h2>
-
+        <h2>Vous ne pouvez pas commentez car il faut vous connecter</h2>
+    
     {% endif %}
+</div>
 {% endblock %}

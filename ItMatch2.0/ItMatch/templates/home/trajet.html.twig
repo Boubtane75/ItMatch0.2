@@ -1,17 +1,19 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('build/proposer.css') }}">
+{% endblock %}
 
 {% block title %}Trajet!{% endblock %}
 
 {% block body %}
-    <h1 class="container">Crée un trajet</h1>
 <div class="container">
     {{ form_start(form) }}
+    <h1 class="container">Créer et proposer votre trajet</h1>
     {{ form_widget(form) }}
-    <button type="submit" class="btn btn-warning">Enregistrer</button>
+    <button type="submit" class="button-propal">Enregistrer</button>
     {{ form_end(form) }}
-
 </div>
 
 {% endblock %}

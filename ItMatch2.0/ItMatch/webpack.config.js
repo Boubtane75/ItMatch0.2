@@ -23,15 +23,18 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/js/app.js')
-    .addEntry('recherche', './assets/js/recherche.js')
-    .addEntry('test', './assets/js/test.js')
-    // .addEntry('login', './assets/js/login.js')
+    
+    .addStyleEntry('home', './assets/css/home.css')
+    .addStyleEntry('proposer', './assets/css/proposer.css')
+    .addStyleEntry('search', './assets/css/search.css')
+    .addStyleEntry('contact', './assets/css/contact.css')
     .addStyleEntry('login', './assets/css/login.css')
     .addStyleEntry('register', './assets/css/register.css')
-    .addStyleEntry('search', './assets/css/search.css')
-    .addStyleEntry('home', './assets/css/home.css')
-    .addStyleEntry('contact', './assets/css/contact.css')
+    .addStyleEntry('trajetuser', './assets/css/trajetuser.css')
+    
+    
+
+    
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

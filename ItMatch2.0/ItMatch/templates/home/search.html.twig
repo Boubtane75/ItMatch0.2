@@ -1,13 +1,17 @@
 
 {% extends 'base.html.twig' %}
+
+
+
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('build/search.css') }}">
+   
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet'>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.js'></script>
     <script src="https://kit.fontawesome.com/d0ad396109.js" crossorigin="anonymous"></script>
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.0.2/mapbox-gl-directions.css' type='text/css' />
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.3.1/mapbox-gl.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ asset('build/search.css') }}">
 {% endblock %}
 
 {% block title %}Rechercher un trajet !{% endblock %}
@@ -30,7 +34,7 @@
         <p>Date & Heure :</p>
         <input type="datetime-local" name="rdv" class="form-control">
         </div>
-        <button type="submit" id="btnPosition" class="btn btn-outline-primary">Trouver</button>
+        <button type="submit" id="btnPosition" class="btn-find">Trouver</button>
     </div>
 </div>
 

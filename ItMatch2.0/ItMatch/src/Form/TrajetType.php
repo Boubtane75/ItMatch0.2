@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class TrajetType extends AbstractType
 {
@@ -14,7 +15,8 @@ class TrajetType extends AbstractType
     {
         $builder
             ->add('LieuDepart')
-            ->add('LieuArrived')
+            ->add('LieuArrived', TextType::class,
+            ['label'=>'Arriver'])
             ->add('HeureDepart')
         ;
     }

@@ -1,5 +1,6 @@
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 {% extends 'base.html.twig' %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('build/register.css') }}">
 {% endblock %}
@@ -11,8 +12,8 @@
 {% block body %}
 
 <div class="containerFormulaire">
-<div class="box">
-<h1 class="container">Inscription</h1>
+<div class="box container">
+<h1>Inscription</h1>
 
     {{ form_start(form) }}
 
@@ -23,7 +24,7 @@
     {{ form_row(form.confirm_password,{'label':'Confirme mot de passe','attr':{'placeholder':'Confirme mot de passe'}}) }}
 
 
-    <button type="submit" class="btn btn-outline-primary">Inscription</button>
+    <button type="submit" class="button-propal">Inscription</button>
     {{ form_end(form) }}
 
    </div>
