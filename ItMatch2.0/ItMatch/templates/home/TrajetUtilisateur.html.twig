@@ -41,12 +41,18 @@
                     {% for passager in trajet.passager %}
                         <div class="line-car">
                             <p>{{ passager.username }}</p>
+                            <p>Les Hobbies en commun sont :</p>
+                            {% set ind = loop.index0 %}
+                            {% for hobby in hobbies[ind] %}
+                                <p>{{ hobby.nomHobby }}</p>
+                            {% endfor %}
+
                         </div>
                     {% endfor %}
 
                     {% if trajet.passager|length < 3 %}
                     <form action="{{ path('Rejoindre',{id: trajet.id}) }}" method="post">
-                        <button type="submit" class="btn btn-primary">Rejoindre</button>
+                        <button type="submit" class="button-propal">Rejoindre</button>
                     </form>
                     {% else %}
                         <div class="line-car">
@@ -88,4 +94,5 @@
     
     {% endif %}
 </div>
+    </div>
 {% endblock %}

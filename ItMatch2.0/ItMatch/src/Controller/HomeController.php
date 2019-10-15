@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Contact;
+use App\Entity\Hobby;
 use App\Entity\Trajet;
 use App\Entity\trajetSearch;
 use App\Entity\Utilisateur;
@@ -91,6 +92,7 @@ class HomeController extends AbstractController
 
     public function profile (Utilisateur $user,Request $request,ObjectManager $em)
     {
+
         $form = $this->createForm(UserTpeType::class,$user);
         $form->handleRequest($request);
 
@@ -139,9 +141,36 @@ class HomeController extends AbstractController
      * @Route("/Trajet/{id}",name="Trajet")
      */
 
-    public function letrajet ($id, Trajet $trajects, Request $request, ObjectManager $manager, HobbyRepository $repository)
+    public function letrajet ($id, Trajet $trajects, Request $request, ObjectManager $manager)
     {
-     
+        $hobieConducteur = $trajects->getConducteurId()->getHobbies()->getValues();
+        $passagers = $trajects->getPassager()->getValues();
+
+        $listpassagerHobbie = [];
+        foreach ($passagers as $passager)
+        {
+            $tabHobies = [];
+            $hohbiespassager = $passager->getHobbies()->getValues();
+
+            foreach ($hohbiespassager as $hobiespassager)
+            {
+                foreach ($hobieConducteur as $hobiesconduteur)
+                {
+                    if ($hobiespassager == $hobiesconduteur){
+                        $hobbiefinal = $hobiespassager;
+                        array_push($tabHobies,$hobbiefinal);
+                    }
+                }
+            }
+
+            array_push($listpassagerHobbie, $tabHobies);
+           // dd($tabHobies);
+            //return $tabHobies;
+        }
+
+
+
+
         $idTrajet = $trajects->getId();
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository(Trajet::class);
@@ -162,6 +191,7 @@ class HomeController extends AbstractController
         }
 
         return $this->render('home/TrajetUtilisateur.html.twig',[
+            'hobbies' =>$listpassagerHobbie,
             'user' => $user,
             'coment'=>$comments,
             'form' => $form->createView(),
