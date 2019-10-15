@@ -34,7 +34,7 @@ class Comment
     private $createdAd;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\trajet", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Trajet", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $trajet;
