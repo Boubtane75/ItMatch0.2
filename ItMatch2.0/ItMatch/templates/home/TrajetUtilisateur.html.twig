@@ -7,8 +7,8 @@
 
 {% block body %}
 
-    <div class="container-details">
 <h1>Le trajet de {{ trajet.conducteurid.username }} </h1>
+    <div class="container-details">
         <div class="block-card ">
             <div class="img-pp">
                 <img src="/images/users/{{ trajet.conducteurid.filename }}" alt="card_img_top"></div>
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-<div class="wafack">
+<div class="coms-container">
     <div class="container box-coms">
     <h1>{{ coment | length }} comentaires :</h1>
         {% for coment in coment %}
@@ -77,7 +77,7 @@
         {{ form_start(form) }}
         {{ form_row(form.author,{'attr':{'placeholder': "votre pseudo"}}) }}
         {{ form_row(form.Contenu,{'attr':{'placeholder': "votre commentaire"}}) }}
-    <div class="wesh">
+    <div class="btn-bloc">
         <button type="submit" class="button-propal">Publier</button>
     </div>
         {{ form_end(form) }}

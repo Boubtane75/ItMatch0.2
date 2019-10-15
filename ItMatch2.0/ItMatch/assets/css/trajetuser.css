@@ -3,6 +3,11 @@ html, body {
   padding: 0;
 }
 
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
 .container-details {
   display: flex;
   flex-direction: column;
@@ -13,7 +18,7 @@ html, body {
   margin: 30px auto;
 }
 
-.wafack {
+.coms-container {
   background-color: #C5FFF7;
 }
 
@@ -65,7 +70,7 @@ html, body {
   transition: 0.8s;
 }
 
-.wesh {
+.btn-bloc {
   padding: 7.5px 0;
 }
 
