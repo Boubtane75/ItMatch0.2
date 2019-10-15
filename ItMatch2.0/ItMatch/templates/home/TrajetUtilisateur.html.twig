@@ -27,25 +27,27 @@
                     <div class="fiche-bloc-reso">
                         <hr>
                         <div class="fiche-reso">
-                            <img src="img/twitter.png" alt="réseau">
-                            <img src="img/youtube.png" alt="réseau">
-                            <img src="img/facebook.png" alt="réseau">
+                            <img src="{{ asset('img/twitter.png') }}" alt="réseau">
+                            <img src="{{ asset('img/youtube.png') }}" alt="réseau">
+                            <img src="{{ asset('img/facebook.png') }}" alt="réseau">
                         </div>
                         <hr>
                     </div>
 
                     <div class="line-car">
-                        <img src="img/tuture.JPG" alt=""><p>{{ trajet.conducteurid.car.model }}</p>
+                        <img src="{{ asset('img/tuture.JPG') }}" alt=""><p>{{ trajet.conducteurid.car.model }}</p>
                     </div>
-                    <p>Les passagers sont :</p>
+                    <p class="passengers-are">Les passagers sont :</p>
                     {% for passager in trajet.passager %}
-                        <div class="line-car">
-                            <p>{{ passager.username }}</p>
-                            <p>Les Hobbies en commun sont :</p>
-                            {% set ind = loop.index0 %}
-                            {% for hobby in hobbies[ind] %}
-                                <p>{{ hobby.nomHobby }}</p>
-                            {% endfor %}
+                        <div class="container-hobbies">
+                            <p class="passager-name">{{ passager.username }}</p>
+                            <p>Ses Hobbies en commun sont :</p>
+                            <div class="hobbies-box">
+                                {% set ind = loop.index0 %}
+                                {% for hobby in hobbies[ind] %}
+                                    <li>{{ hobby.nomHobby }}</li>
+                                {% endfor %}
+                            </div>
 
                         </div>
                     {% endfor %}

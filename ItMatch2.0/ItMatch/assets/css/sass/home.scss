@@ -213,6 +213,7 @@ html{
         background-color:white;
         position: absolute;
         bottom: 0;
+        border: 4px solid grey;
         .pp-text{
             height:calc(700px - 150px);
             margin-top: 75px;
@@ -295,7 +296,7 @@ html{
     font-weight: 700;
     width: 120px;
     font-size:1.1rem;
-    margin: 0 auto;
+    margin: 10px auto;
     &:hover{
         background-color: $gris;
         text-decoration: none;
