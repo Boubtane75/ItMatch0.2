@@ -7,6 +7,12 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-image: url("https://img.pngio.com/city-158-anthracite-kids-carpet-kids-road-map-png-1000_1000.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
 }
 
 form {

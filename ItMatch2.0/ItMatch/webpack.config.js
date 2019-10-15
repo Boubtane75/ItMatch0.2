@@ -31,6 +31,7 @@ Encore
     .addStyleEntry('login', './assets/css/login.css')
     .addStyleEntry('register', './assets/css/register.css')
     .addStyleEntry('trajetuser', './assets/css/trajetuser.css')
+    .addStyleEntry('profil', './assets/css/profil.css')
     
     
 
