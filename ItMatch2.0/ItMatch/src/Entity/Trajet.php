@@ -57,7 +57,7 @@ class Trajet
 
     public function __construct()
     {
-        $this->utilisateurs = new ArrayCollection();
+        //$this->utilisateurs = new ArrayCollection();
         $this->passager = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
@@ -109,13 +109,13 @@ class Trajet
      */
     public function getUtilisateurs(): Collection
     {
-        return $this->utilisateurs;
+        return $this->passager;
     }
 
     public function addUtilisateur(Utilisateur $utilisateur): self
     {
-        if (!$this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs[] = $utilisateur;
+        if (!$this->passager->contains($utilisateur)) {
+            $this->passager[] = $utilisateur;
             $utilisateur->addTrajet($this);
         }
 
@@ -124,8 +124,8 @@ class Trajet
 
     public function removeUtilisateur(Utilisateur $utilisateur): self
     {
-        if ($this->utilisateurs->contains($utilisateur)) {
-            $this->utilisateurs->removeElement($utilisateur);
+        if ($this->passager->contains($utilisateur)) {
+            $this->passager->removeElement($utilisateur);
             $utilisateur->removeTrajet($this);
         }
 

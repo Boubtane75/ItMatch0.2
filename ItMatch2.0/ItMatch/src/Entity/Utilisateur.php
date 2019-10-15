@@ -119,7 +119,7 @@ class Utilisateur implements UserInterface
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Trajet", mappedBy="passager")
      */
-    private $passager;
+    private $passagers;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Hobby", mappedBy="hobbyUser")
@@ -129,10 +129,9 @@ class Utilisateur implements UserInterface
 
     public function __construct()
     {
-        $this->trajet = new ArrayCollection();
+        //$this->trajet = new ArrayCollection();
         $this->trajets = new ArrayCollection();
         $this->passagers = new ArrayCollection();
-        $this->passager = new ArrayCollection();
         $this->hobbies = new ArrayCollection();
     }
 
@@ -287,13 +286,13 @@ class Utilisateur implements UserInterface
      */
     public function getTrajet(): Collection
     {
-        return $this->trajet;
+        return $this->trajets;
     }
 
     public function addTrajet(Trajet $trajet): self
     {
-        if (!$this->trajet->contains($trajet)) {
-            $this->trajet[] = $trajet;
+        if (!$this->trajets->contains($trajet)) {
+            $this->trajets[] = $trajet;
         }
 
         return $this;
@@ -301,8 +300,8 @@ class Utilisateur implements UserInterface
 
     public function removeTrajet(Trajet $trajet): self
     {
-        if ($this->trajet->contains($trajet)) {
-            $this->trajet->removeElement($trajet);
+        if ($this->trajets->contains($trajet)) {
+            $this->trajets->removeElement($trajet);
         }
 
         return $this;
@@ -405,7 +404,7 @@ class Utilisateur implements UserInterface
      */
     public function getPassager(): Collection
     {
-        return $this->passager;
+        return $this->passagers;
     }
 
     /**
