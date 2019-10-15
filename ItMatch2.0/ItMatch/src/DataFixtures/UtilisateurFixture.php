@@ -39,7 +39,7 @@ class UtilisateurFixture extends Fixture
                 ->setPays($faker->city)
                 ->setAdress($faker->address)
                 ->setPhone($faker->phoneNumber)
-                ->setPassword($this->encoder->encodePassword($user,$faker->password));
+                ->setPassword($this->encoder->encodePassword($user,"Boubtane5700"));
 
             $manager->persist($user);
             for ($h = 1 ; $h <= 5 ; $h++ ) {

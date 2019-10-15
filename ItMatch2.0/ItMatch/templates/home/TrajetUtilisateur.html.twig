@@ -41,6 +41,12 @@
                     {% for passager in trajet.passager %}
                         <div class="line-car">
                             <p>{{ passager.username }}</p>
+                            <p>Les Hobbies en commun sont :</p>
+                            {% set ind = loop.index0 %}
+                            {% for hobby in hobbies[ind] %}
+                                <p>{{ hobby.nomHobby }}</p>
+                            {% endfor %}
+
                         </div>
                     {% endfor %}
 
@@ -88,4 +94,5 @@
     
     {% endif %}
 </div>
+    </div>
 {% endblock %}
