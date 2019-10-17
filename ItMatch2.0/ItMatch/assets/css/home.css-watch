@@ -110,7 +110,6 @@ html {
   background-color: #6c5ce7;
   margin: 120px 0;
   padding: 60px 0;
-  color: #EDE7DD;
 }
 .container-fiche .fiche {
   display: flex;
@@ -149,7 +148,6 @@ html {
   border-color: #3A3A3A;
   margin: 60px 0;
   user-select: none;
-  transition: 0.8s;
 }
 .container-comeback .input-from-to .btn-info:hover {
   background-color: #3A3A3A;
@@ -210,7 +208,6 @@ html {
   position: absolute;
   bottom: 0;
   border: 4px solid grey;
-  color: #3A3A3A;
 }
 .block-card .whitee .pp-text {
   height: calc(700px - 150px);
@@ -245,7 +242,7 @@ html {
 .block-card .whitee .pp-text .travel-box p {
   text-align: center;
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .fiche-bloc-reso .fiche-reso {
@@ -294,7 +291,6 @@ html {
   width: 120px;
   font-size: 1.1rem;
   margin: 10px auto;
-  transition: 0.8s;
 }
 .text-center:hover {
   background-color: #3A3A3A;
@@ -388,12 +384,9 @@ footer a:hover {
   align-items: center;
 }
 .box-arrow img {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   margin-right: 30px;
-}
-.box-arrow a {
-  color: #EDE7DD;
 }
 
 .media-block {
@@ -560,4 +553,4 @@ footer a:hover {
   }
 }
 
-/*# sourceMappingURL=home.css.map */
+/*# sourceMappingURL=home.css-watch.map */

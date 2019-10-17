@@ -52,7 +52,7 @@ html{
     margin: $grid-gutter-width*4 0;
     background-color: $primary;
     align-items:center;
-    color: $gris;
+    color: #EDE7DD;
 
     h2{
         font-size: 2.5rem;
@@ -72,6 +72,7 @@ html{
         padding: $grid-gutter-width/2 $grid-gutter-width*2;
         user-select: none;
         border:4px solid $gris;
+        transition: 0.8s;
             &:hover{
                 background-color:$primary;
                 color:$gris;
@@ -118,6 +119,7 @@ html{
     background-color: $primary;
     margin: $grid-gutter-width*4 0;
     padding: $grid-gutter-width*2 0;
+    color: #EDE7DD;
     .fiche{
         display: flex;
         flex-direction: row;
@@ -155,6 +157,7 @@ html{
             border-color: $gris;
             margin: $grid-gutter-width*2 0;
             user-select: none;
+            transition: 0.8s;
             &:hover{
                 background-color: $gris;
                 color:$primary;
@@ -217,6 +220,8 @@ html{
         position: absolute;
         bottom: 0;
         border: 4px solid grey;
+        color:$gris;
+        
         .pp-text{
             height:calc(700px - 150px);
             margin-top: 75px;
@@ -248,7 +253,8 @@ html{
                 p{
                     text-align: center;
                     font-size: 1.1rem;
-                    font-weight: 500;
+                    font-weight: 700;
+                    
                 }
             }
         }
@@ -300,6 +306,7 @@ html{
     width: 120px;
     font-size:1.1rem;
     margin: 10px auto;
+    transition: 0.8s;
     &:hover{
         background-color: $gris;
         text-decoration: none;
@@ -366,9 +373,9 @@ html{
 //   *******************************************************************
 //   *******************************************************************
 footer{
-    margin-top: $grid-gutter-width*4;
+    
     background-color: $primary;
-    color: $gris;
+    color: #EDE7DD;
     h2{
         margin: 0;
         font-weight:700;
@@ -398,7 +405,7 @@ footer{
         hr{
             height: 2px;
             width:100%;
-            background-color:$gris;
+            background-color:#EDE7DD;
             margin-bottom: $grid-gutter-width;
         }
 
@@ -409,9 +416,12 @@ footer{
     justify-content: left;
     align-items: center;
         img{
-            width:30px;
-            height:30px;
+            width:20px;
+            height:20px;
             margin-right: $grid-gutter-width;
+        }
+        a{
+            color: #EDE7DD;
         }
 }
 
@@ -420,7 +430,7 @@ footer{
     hr{
         height: 2px;
         width:100%;
-        background-color:$gris;
+        background-color:#EDE7DD;
         margin-bottom: $grid-gutter-width;
 
     }

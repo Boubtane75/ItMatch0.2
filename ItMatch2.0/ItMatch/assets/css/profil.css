@@ -19,24 +19,27 @@ html {
   font-size: 1.3rem;
   justify-content: center;
   user-select: none;
+  transition: 0.8s;
 }
 .button-propal:hover {
   background-color: #3A3A3A;
-  color: #C5FFF7;
+  color: #6c5ce7;
   transition: 0.8s;
 }
 
 .container-form {
   border-radius: 10px;
-  background-color: #C5FFF7;
+  background-color: #6c5ce7;
   margin: 60px auto;
   padding-right: 30px;
   padding-left: 30px;
   padding-top: 30px;
   padding-bottom: 0;
+  color: #EDE7DD;
 }
 .container-form h1 {
   text-align: center;
+  font-weight: 700;
 }
 
 .IMAGINE .form-group {

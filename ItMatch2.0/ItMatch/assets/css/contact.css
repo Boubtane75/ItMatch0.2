@@ -11,15 +11,17 @@ body {
 
 form {
   margin: 120px auto;
-  background-color: #C5FFF7;
+  background-color: #6c5ce7;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 25px;
+  border-radius: 10px;
+  color: #EDE7DD;
 }
 form h1 {
   margin: 30px auto;
   text-align: center;
+  font-weight: 700;
 }
 form h2 {
   text-align: center;
@@ -44,10 +46,11 @@ form .button-propal {
   display: flex;
   justify-content: center;
   user-select: none;
+  transition: 0.8s;
 }
 form .button-propal:hover {
   background-color: #3A3A3A;
-  color: #C5FFF7;
+  color: #6c5ce7;
   transition: 0.8s;
 }
 
