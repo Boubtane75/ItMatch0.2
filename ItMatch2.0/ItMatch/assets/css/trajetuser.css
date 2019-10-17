@@ -73,6 +73,9 @@ h1 {
 .which-car p {
   font-size: 4rem;
 }
+.which-car img {
+  width: 150px;
+}
 
 .bloc-passengers-hobbies {
   padding: 30px;
@@ -108,7 +111,7 @@ h1 {
 }
 
 .coms-container {
-  background-color: #C5FFF7;
+  background-color: #6c5ce7;
 }
 .coms-container h1 {
   padding-top: 30px;
@@ -157,7 +160,7 @@ h1 {
 }
 .button-propal:hover {
   background-color: #3A3A3A;
-  color: #C5FFF7;
+  color: #6c5ce7;
   transition: 0.8s;
 }
 
