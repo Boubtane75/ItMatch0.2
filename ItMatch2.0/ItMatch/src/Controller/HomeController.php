@@ -169,8 +169,6 @@ class HomeController extends AbstractController
         }
 
 
-
-
         $idTrajet = $trajects->getId();
         $user = $this->getUser();
         $repo = $this->getDoctrine()->getRepository(Trajet::class);
@@ -184,6 +182,7 @@ class HomeController extends AbstractController
         {
             $comment->setCreatedAd(new \DateTime())
                     ->setTrajet($trajet);
+            dd($comment);
             $manager->persist($comment);
             $manager->flush();
 
