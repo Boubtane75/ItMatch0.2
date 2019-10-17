@@ -10,57 +10,124 @@ html, body{
 }
 h1{
     text-align: center;
-    margin-top: 30px;
-}
-.container-details{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.block-card{
     margin: 30px auto;
-    height:1000px;
-    .whitee{
-        height: calc(1000px - 75px);
-        border: 4px solid grey;
-        .pp-text{
-            height: calc(1000px - 150px);
-        }
+}
+.driver-name{
+    text-align: center;
+    margin: $grid-gutter-width 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+.underline-driver{
+    border: 2px solid $gris;
+    width:25%;
+
+}
+.detail-result{
+    border:2px solid $gris;
+    width: 60%;
+    margin:  auto;
+    p{
+        font-size:1.3rem;
     }
 }
-
-.container-hobbies{
-    width: 100%;
-    padding-left: 40px;
-    margin: 10px 0;
-    &:nth-child(0n+1){
-        background-color:purple;
+.container-pp{
+    display: flex;
+    justify-content: center;
+    border-radius: 90%;
+    img{
+        border-radius: 90%;
+        margin-top: $grid-gutter-width*2;
+        
     }
-    .passager-name{
-        text-align: left;
-        font-weight: 700;
-        font-size: 1.3rem;
-        margin-bottom: 5px;
-    }
+}
+.startngo{
     p{
         font-size: 1.3rem;
-        margin: 0;
+        text-align: center;
+    }
+}
+.bloc-hr{
+    hr{
+        width: 65%;
+        margin: 0 auto;
+        border: 2px solid $gris;
+    }
+    img{
+        margin: 10px 0;
+    }
+}
+
+.social-container{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin: 0 auto;
+    img{
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.which-car{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px auto;
+    p{
+        font-size: 4rem;
+    }
+}
+
+.bloc-passengers-hobbies{
+    padding: $grid-gutter-width;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .passager-name{
+            font-size: 1.4rem;
+            
+            margin: 0;
     }
     li{
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 }
-.passengers-are{
-    font-size: 1.2rem;
-    padding: 0 30px;
+.passengers-are{ 
+    font-size: 1.8rem;
+    padding-left: $grid-gutter-width*2;
+    font-weight: 700;
 }
+.container-hobbies{
+    margin-bottom: 30px;
+}
+
+.to-much-ppl{
+    margin: 0;
+    text-align: center;
+    padding: 30px 0;
+    font-weight: 700;
+    color:#9C0404;
+    font-size: 2rem;
+}
+
+
+
+
+
+
+
+
+
 
 
 
 
 .coms-container{
     background-color: $primary;
+    h1{
+        padding-top: $grid-gutter-width;
+    }
 }
 .box-coms{
     

@@ -1,5 +1,5 @@
 $grid-gutter-width: 30px;
-$primary:#C5FFF7;
+$primary:#6c5ce7;
 $secondary:#CCF1FF;
 $gradient:(to right top, #009bff, #4bacff, #71bdff, #93ceff, #b4deff, #b4deff, #b4deff, #b4deff, #93ceff, #71bdff, #4bacff, #009bff);
 $gris:#3A3A3A;
@@ -326,6 +326,37 @@ html{
             }
         }
     }
+}
+.navbar{
+    border:none;
+    box-shadow: 3px 3px 13px -2px rgba(0,0,0,0.63);
+    li{
+        font-size: 1.4rem;
+    }
+}
+.navbar-brand{
+    img{
+        width: 150px;
+    }
+}
+.navBtn{
+    list-style: none;
+    .btnOfNav{
+        -webkit-appearance: unset;
+        margin-left: 30px;
+        color:white;
+        font-weight: 700;
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width:991px) {
+
+.navBtn{
+    .btnOfNav{
+        margin-left: 0;
+    }
+}
+
 }
 
 

@@ -10,7 +10,7 @@
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-info">
         {% if not app.user %}
-            <a class="navbar-brand" href="/">On the Road</a>
+            <a class="navbar-brand" href="/"><img src="{{ asset('img/logo.png') }}"></a>
         {% else %}
             <a class="navbar-brand" href="/">Bienvenue {{ app.user.username }}</a>
         {% endif %}
@@ -55,15 +55,15 @@
 
             {% if not app.user %}
                 <li class="navBtn">
-                    <a type="button" href="{{ path('security_registration') }}" class="button bg-secondary">Inscription</a>
+                    <a type="button" href="{{ path('security_registration') }}" class="btnOfNav">Inscription</a>
                 </li>
                 <li class="navBtn">
-                    <a type="button" href="{{ path('security_login') }}" class="button bg-secondary">Connexion</a>
+                    <a type="button" href="{{ path('security_login') }}" class="btnOfNav">Connexion</a>
                 </li>
         
             {% else %}
                 <li class="navBtn">
-                    <a type="button " href="{{ path('security_logout') }}" class="button bg-secondary">Deconnexion</a>
+                    <a type="button " href="{{ path('security_logout') }}" class="btnOfNav">Deconnexion</a>
                 </li>
             {% endif %}
 
